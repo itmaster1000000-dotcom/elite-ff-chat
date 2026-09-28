@@ -3,48 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#05060a" />
-  <meta name="description" content="ELITE FF CHAT — rank-based Free Fire community chat." />
+  <meta name="theme-color" content="#05070b" />
+  <meta name="description" content="ELITE FF CHAT — visual rank-based Free Fire community chat." />
   <title>ELITE FF CHAT</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app-bg"></div>
-  <div class="particles" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="ambient ambient-c" aria-hidden="true"></div>
 
   <div class="app-shell">
     <header class="topbar">
-      <button class="mobile-back hidden" id="backToRooms" aria-label="Back to chat rooms">‹</button>
+      <button class="mobile-back hidden" id="backToRooms" aria-label="Back to rooms">‹</button>
       <div class="brand-wrap">
-        <div class="brand-mark">EF</div>
+        <div class="brand-mark"><span>EF</span></div>
         <div class="brand-text">
           <h1>ELITE FF CHAT</h1>
           <p>PRIVATE FREE FIRE COMMUNITY</p>
         </div>
       </div>
       <div class="top-actions">
-        <button class="top-chip" id="statusChip"><span class="status-dot"></span> ONLINE</button>
         <button class="icon-btn" id="notifyBtn" aria-label="Notifications">◈</button>
         <button class="profile-btn" id="profileBtn" aria-label="Open profile">
-          <span class="profile-mini rank-bronze">FF</span>
+          <span class="profile-mini rank-bronze">B</span>
           <span class="profile-btn-text">PROFILE</span>
         </button>
       </div>
     </header>
 
     <main class="workspace">
-      <!-- ROOM BROWSER -->
+      <!-- ROOM DIRECTORY -->
       <section class="room-browser" id="roomBrowser">
         <div class="hero-panel">
-          <div class="hero-kicker">SELECT YOUR BATTLE ROOM</div>
-          <h2>9 ELITE CHAT CHANNELS</h2>
-          <p>Every rank has its own visual identity. Enter a room to open its live chat.</p>
+          <div class="hero-copy">
+            <span class="eyebrow">ELITE NETWORK / SELECT A ROOM</span>
+            <h2>ENTER YOUR<br><strong>BATTLE CHANNEL</strong></h2>
+            <p>Each rank has its own identity, frame language and access level. Tap a card to enter its chat.</p>
+          </div>
+          <div class="hero-core" aria-hidden="true">
+            <div class="core-ring ring-1"></div>
+            <div class="core-ring ring-2"></div>
+            <div class="core-symbol">EF</div>
+          </div>
         </div>
 
         <section class="member-strip">
-          <div class="member-badge-wrap rank-bronze aura-static">
+          <div class="member-badge-wrap rank-bronze">
+            <div class="badge-orbit"></div>
             <div class="badge-glyph">B</div>
           </div>
           <div class="member-meta">
@@ -52,29 +58,30 @@
             <strong id="userName">Guest Player</strong>
             <span id="userRank" class="rank-text">BRONZE MEMBER</span>
           </div>
-          <span class="member-status"><i></i> VERIFIED UI DEMO</span>
+          <div class="member-status"><i></i><span>READY</span></div>
         </section>
 
         <div class="section-heading">
           <div>
-            <span class="eyebrow">CHANNELS</span>
-            <h3>ALL GROUPS</h3>
+            <span class="eyebrow">CHANNEL DIRECTORY</span>
+            <h3>ALL GROUPS <span>09</span></h3>
           </div>
-          <button class="mini-action" id="showRanksBtn">RANK SYSTEM</button>
+          <button class="mini-action" id="showRanksBtn">RANK SYSTEM ↗</button>
         </div>
 
-        <div class="room-grid" id="roomList"></div>
+        <div class="room-grid" id="roomList" aria-label="Elite chat rooms"></div>
 
         <section class="special-zone" id="hiddenGuildCard">
-          <div class="special-zone-head">
-            <div>
-              <span class="eyebrow">EXCLUSIVE</span>
-              <h3>HIDDEN GUILD</h3>
-            </div>
-            <span class="skull-lock">☠</span>
+          <div class="special-ornament">✦</div>
+          <div class="special-zone-main">
+            <span class="eyebrow">EXCLUSIVE / INVISIBLE TO OUTSIDERS</span>
+            <h3>HIDDEN GUILD</h3>
+            <p>Verified guild members receive the Skull &amp; Bones identity, private room access and exclusive profile styling.</p>
+            <button class="special-btn" id="guildRoomBtn">ENTER HIDDEN GUILD <span>→</span></button>
           </div>
-          <p>Invisible to outsiders. Skull &amp; Bones styling is granted only to verified guild members.</p>
-          <button class="special-btn" data-room="guild" id="guildRoomBtn">ENTER HIDDEN GUILD</button>
+          <div class="skull-emblem" aria-hidden="true">
+            <span>☠</span>
+          </div>
         </section>
 
         <div class="browser-footer">
@@ -87,8 +94,8 @@
       <section class="chat-screen hidden" id="chatScreen">
         <div class="chat-hero" id="chatHero">
           <div class="chat-hero-left">
-            <div class="room-crest" id="roomCrest">G</div>
-            <div>
+            <div class="room-crest rank-global" id="roomCrest">G</div>
+            <div class="chat-head-copy">
               <span class="eyebrow" id="roomKicker">OPEN CHANNEL</span>
               <h2 id="roomTitle">GLOBAL CHAT</h2>
               <p id="roomSubtitle">Bronze → Grandmaster • Everyone can chat</p>
@@ -105,10 +112,10 @@
         </div>
 
         <div class="composer-wrap">
-          <div class="typing-preview"><span></span><span></span><span></span><em>Text messages only</em></div>
+          <div class="typing-preview"><span></span><span></span><span></span><em>TEXT + EMOJI</em></div>
           <form class="composer" id="composerForm">
             <button type="button" class="emoji-btn" id="emojiBtn" title="Add emoji">☺</button>
-            <input id="messageInput" type="text" maxlength="500" autocomplete="off" placeholder="Write your message…" />
+            <input id="messageInput" type="text" maxlength="500" autocomplete="off" placeholder="Write a message…" />
             <button type="submit" class="send-btn" aria-label="Send message">➤</button>
           </form>
         </div>
@@ -123,15 +130,15 @@
       <div class="modal-crest">EF</div>
       <span class="eyebrow">MEMBER ACCESS</span>
       <h3>JOIN ELITE FF CHAT</h3>
-      <p>Create your account. New members begin at Bronze after verification.</p>
+      <p>Create a demo account. Verified members begin at Bronze. Real Supabase registration comes next.</p>
       <form id="registerForm" class="auth-form">
         <label>Email<input type="email" id="email" required placeholder="you@example.com" /></label>
         <label>Password<input type="password" id="password" required minlength="6" placeholder="Minimum 6 characters" /></label>
         <label>Free Fire Name<input type="text" id="ffName" required maxlength="30" placeholder="Your FF name" /></label>
-        <label>Free Fire UID<input type="text" id="ffUid" required maxlength="20" placeholder="Your FF UID" inputmode="numeric" /></label>
+        <label>Free Fire UID<input type="text" id="ffUid" required maxlength="20" inputmode="numeric" placeholder="Your FF UID" /></label>
         <button class="primary-btn" type="submit">CREATE ACCOUNT</button>
       </form>
-      <small class="notice">Frontend demo only — Supabase authentication will be connected in the next phase.</small>
+      <small class="notice">Frontend prototype only. Authentication, moderation and rank rules will be server-controlled in the Supabase phase.</small>
     </div>
   </div>
 
@@ -141,7 +148,7 @@
       <button class="modal-close" data-close="rankModal">×</button>
       <span class="eyebrow">ELITE PROGRESSION</span>
       <h3>RANK SYSTEM</h3>
-      <p>Each rank gets its own badge, profile frame, chat frame and special effects.</p>
+      <p>Every rank has a dedicated badge, profile frame, chat frame and progression test.</p>
       <div class="rank-list" id="rankList"></div>
     </div>
   </div>
