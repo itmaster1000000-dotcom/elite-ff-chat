@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#04050a" />
-  <meta name="description" content="ELITE FF CHAT — rank-based Free Fire community chat." />
+  <meta name="theme-color" content="#05070c" />
+  <meta name="description" content="ELITE FF CHAT — premium rank-based Free Fire community chat." />
   <title>ELITE FF CHAT</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="bg-noise" aria-hidden="true"></div>
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="ambient ambient-blue" aria-hidden="true"></div>
-  <div class="ambient ambient-red" aria-hidden="true"></div>
-  <div class="ambient ambient-gold" aria-hidden="true"></div>
+  <div class="orb orb-blue" aria-hidden="true"></div>
+  <div class="orb orb-red" aria-hidden="true"></div>
+  <div class="orb orb-gold" aria-hidden="true"></div>
+  <div class="energy-grid" aria-hidden="true"></div>
 
   <div class="app-shell">
     <header class="topbar">
-      <button class="icon-button back-button hidden" id="backToRooms" aria-label="Back to all groups">‹</button>
+      <button class="icon-button back-button hidden" id="backToRooms" aria-label="Back to rooms">←</button>
       <div class="brand">
         <div class="brand-mark"><span>EF</span><i></i></div>
-        <div class="brand-copy">
+        <div>
           <h1>ELITE FF CHAT</h1>
           <p>PRIVATE FREE FIRE COMMUNITY</p>
         </div>
       </div>
       <div class="top-actions">
-        <button class="icon-button" id="notifyBtn" aria-label="Notifications">◇</button>
-        <button class="profile-button" id="profileBtn" aria-label="Profile">
-          <span class="tiny-badge rank-bronze" id="topBadge"></span>
+        <button class="icon-button" id="notifyBtn" aria-label="Notifications">◈</button>
+        <button class="profile-button" id="profileBtn">
+          <span class="tiny-sigil rank-bronze">B</span>
           <span class="desktop-only">PROFILE</span>
         </button>
       </div>
@@ -38,32 +38,33 @@
       <section class="room-browser" id="roomBrowser">
         <section class="hero-panel">
           <div class="hero-copy">
-            <div class="hero-kicker"><span class="pulse-dot"></span> ELITE FF NETWORK <span>/</span> BATTLE CHANNELS</div>
-            <h2>ENTER YOUR<br><span>BATTLE CHANNEL</span></h2>
-            <p>Every rank has its own crest, profile frame, chat border and access level. Tap a room to enter its chat.</p>
-            <div class="hero-stats">
-              <div><b>09</b><span>PUBLIC ROOMS</span></div>
-              <div><b>TEXT</b><span>+ EMOJI</span></div>
-              <div><b>1 OWNER</b><span>ADMIN CONTROL</span></div>
+            <div class="hero-kicker"><span class="dot"></span> ELITE NETWORK <span>/</span> BATTLE ROOMS</div>
+            <h2>YOUR RANK.<br><span>YOUR ROOM.</span></h2>
+            <p>Choose an elite channel. Every rank has its own badge language, chat frame, aura and access level.</p>
+            <div class="hero-meta">
+              <span><b>09</b> CHANNELS</span>
+              <span><b>TEXT</b> + EMOJI</span>
+              <span><b>LIVE</b> STYLE</span>
             </div>
           </div>
-          <div class="hero-art" aria-hidden="true">
-            <div class="hero-orbit orbit-1"></div><div class="hero-orbit orbit-2"></div><div class="hero-orbit orbit-3"></div>
-            <div class="hero-core">EF<span></span></div>
-            <div class="hero-ray ray-1"></div><div class="hero-ray ray-2"></div><div class="hero-ray ray-3"></div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-ring ring-a"></div>
+            <div class="hero-ring ring-b"></div>
+            <div class="hero-ring ring-c"></div>
+            <div class="hero-sigil">EF</div>
           </div>
         </section>
 
-        <section class="member-card" id="memberCard">
-          <div class="member-badge-shell rank-bronze" id="memberBadge"></div>
+        <section class="member-card">
+          <div class="member-sigil rank-bronze" id="memberSigil">B</div>
           <div class="member-copy">
             <span class="small-label">CURRENT MEMBER</span>
-            <strong id="userName">OWNER ADMIN</strong>
+            <strong id="userName">Guest Player</strong>
             <span id="userRank">BRONZE MEMBER</span>
           </div>
-          <div class="member-meta">
+          <div class="member-right">
             <span class="status-dot"></span>
-            <span id="memberRole">OWNER ADMIN</span>
+            <span>READY</span>
           </div>
         </section>
 
@@ -78,21 +79,21 @@
         <div class="room-list" id="roomList"></div>
 
         <section class="hidden-guild" id="hiddenGuildCard">
-          <div class="hidden-art">
-            <div class="skull-aura"></div>
-            <div class="skull-emblem">☠</div>
+          <div class="hidden-guild-art">
+            <div class="skull-ring"></div>
+            <div class="skull">☠</div>
           </div>
           <div class="hidden-guild-copy">
-            <span class="small-label">EXCLUSIVE / GUILD VERIFIED ONLY</span>
+            <span class="small-label">EXCLUSIVE / GUILD ONLY</span>
             <h3>HIDDEN GUILD</h3>
-            <p>Invisible to outsiders. Verified guild members unlock the Skull &amp; Bones title, profile frame and private chat.</p>
+            <p>Invisible to outsiders. Verified guild members receive the Skull &amp; Bones title, frame and secure chat access.</p>
             <button class="ghost-button danger-ghost" id="guildRoomBtn">ENTER HIDDEN GUILD <span>→</span></button>
           </div>
-          <span class="hidden-chip">☠ PRIVATE</span>
+          <div class="hidden-chip">☠ PRIVATE</div>
         </section>
 
         <footer class="page-footer">
-          <button class="footer-link" id="adminBtn">⚙ OWNER ADMIN CONTROL</button>
+          <button class="footer-link" id="adminBtn">⚙ ADMIN CONTROL</button>
           <span>TEXT + EMOJI ONLY</span>
         </footer>
       </section>
@@ -100,8 +101,8 @@
       <section class="chat-screen hidden" id="chatScreen">
         <div class="chat-header" id="chatHeader">
           <div class="chat-header-main">
-            <div class="chat-crest" id="roomCrest"></div>
-            <div class="chat-title-block">
+            <div class="chat-sigil rank-global" id="roomCrest">◆</div>
+            <div>
               <span class="small-label" id="roomKicker">OPEN CHANNEL</span>
               <h2 id="roomTitle">GLOBAL CHAT</h2>
               <p id="roomSubtitle">Bronze → Grandmaster · Everyone can chat</p>
@@ -109,18 +110,21 @@
           </div>
           <div class="chat-header-right">
             <span class="online-badge"><i></i><b id="roomCount">128</b> ONLINE</span>
-            <button class="icon-button" id="roomMenuBtn" aria-label="Room options">⋮</button>
+            <button class="icon-button" id="roomMenuBtn" aria-label="Room tools">⋮</button>
           </div>
         </div>
 
-        <div class="chat-notice" id="chatNotice">GLOBAL CHANNEL <span>•</span> RESPECT THE COMMUNITY</div>
-        <div class="chat-body"><div class="chat-feed" id="messages"></div></div>
+        <div class="chat-notice" id="chatNotice">WELCOME TO ELITE FF CHAT <span>•</span> RESPECT THE COMMUNITY</div>
+
+        <div class="chat-body">
+          <div class="chat-feed" id="messages"></div>
+        </div>
 
         <div class="composer-dock">
           <div class="typing-line"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span><small>TEXT + EMOJI</small></div>
           <form class="composer" id="composerForm">
             <button class="composer-button" type="button" id="emojiBtn" aria-label="Insert emoji">☺</button>
-            <input id="messageInput" type="text" maxlength="500" autocomplete="off" placeholder="Write a message…" />
+            <input id="messageInput" type="text" maxlength="500" autocomplete="off" placeholder="Type your message…" />
             <button class="send-button" type="submit" aria-label="Send message">➤</button>
           </form>
         </div>
@@ -131,10 +135,10 @@
   <div class="modal hidden" id="authModal" aria-hidden="true">
     <div class="modal-card">
       <button class="modal-close" data-close="authModal">×</button>
-      <div class="modal-topline"><span class="small-label">MEMBER ACCESS</span><span class="micro-chip">DEMO</span></div>
-      <div class="auth-mark rank-bronze" id="authMark"></div>
+      <div class="modal-crest rank-bronze">B</div>
+      <span class="small-label">MEMBER ACCESS</span>
       <h3>JOIN ELITE FF CHAT</h3>
-      <p>Prototype registration. In the production version, approval and rank permissions will be controlled from Supabase.</p>
+      <p>Create your demo profile. New approved members begin at Bronze.</p>
       <form id="registerForm" class="auth-form">
         <label>Email<input type="email" id="email" required placeholder="you@example.com" /></label>
         <label>Password<input type="password" id="password" required minlength="6" placeholder="Minimum 6 characters" /></label>
@@ -142,58 +146,17 @@
         <label>Free Fire UID<input type="text" id="ffUid" required maxlength="20" inputmode="numeric" placeholder="Your FF UID" /></label>
         <button class="primary-button" type="submit">CREATE DEMO ACCOUNT</button>
       </form>
+      <small class="modal-note">Prototype only. Real authentication, moderation and rank permissions will be server-controlled later.</small>
     </div>
   </div>
 
   <div class="modal hidden" id="rankModal" aria-hidden="true">
     <div class="modal-card wide-modal">
       <button class="modal-close" data-close="rankModal">×</button>
-      <div class="modal-topline"><span class="small-label">ELITE PROGRESSION</span><span class="micro-chip">8 RANKS</span></div>
+      <span class="small-label">ELITE PROGRESSION</span>
       <h3>RANK SYSTEM</h3>
-      <p>Each title has its own crest artwork, profile border and chat visual language.</p>
+      <p>Each rank owns its badge, profile frame, room identity and progression requirement.</p>
       <div class="rank-sheet" id="rankList"></div>
-    </div>
-  </div>
-
-  <div class="modal hidden" id="adminModal" aria-hidden="true">
-    <div class="modal-card wide-modal admin-modal-card">
-      <button class="modal-close" data-close="adminModal">×</button>
-      <div class="admin-head">
-        <div>
-          <span class="small-label">CONTROL CENTER</span>
-          <h3>OWNER ADMIN</h3>
-          <p>Only the owner can access all groups, all members and all moderation controls.</p>
-        </div>
-        <div class="owner-seal">OWNER<br><span>01</span></div>
-      </div>
-
-      <div class="permission-banner">
-        <div><b>OWNER ACCESS</b><span>ALL GROUPS • ALL MEMBERS • ALL RANKS</span></div>
-        <span class="access-pill">FULL ACCESS</span>
-      </div>
-
-      <div class="admin-grid">
-        <div class="admin-card">
-          <span class="small-label">MODERATOR CONTROL</span>
-          <h4>ASSIGN ONE GROUP</h4>
-          <p>Moderators receive control over one selected room only.</p>
-          <div class="admin-row"><select id="modRoomSelect"></select><button class="mini-button" id="assignModBtn">ASSIGN</button></div>
-          <div class="scope-note">MODERATOR CAN: TEST • ADD • REMOVE • BAN IN ASSIGNED ROOM</div>
-          <div class="scope-note danger">MODERATOR CANNOT: GLOBAL ADMIN • RANK OVERRIDE • OTHER ROOMS</div>
-        </div>
-        <div class="admin-card">
-          <span class="small-label">SITE MODERATION</span>
-          <h4>OWNER ACTIONS</h4>
-          <div class="admin-actions">
-            <button class="admin-action" data-owner-action="Review pending members">REVIEW MEMBERS <span>→</span></button>
-            <button class="admin-action" data-owner-action="Open rank controls">RANK CONTROLS <span>→</span></button>
-            <button class="admin-action" data-owner-action="Open global reports">GLOBAL REPORTS <span>→</span></button>
-            <button class="admin-action danger" data-owner-action="Open all bans">ALL BANS / REMOVALS <span>→</span></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="moderator-list" id="moderatorList"></div>
     </div>
   </div>
 
