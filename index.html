@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07090d" />
+  <title>ELITE FF CHAT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">E</div>
+        <div>
+          <h1>ELITE FF CHAT</h1>
+          <p>PRIVATE FREE FIRE COMMUNITY</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="notifyBtn" aria-label="Notifications">🔔</button>
+        <button class="avatar-btn" id="profileBtn" aria-label="Profile">FF</button>
+      </div>
+    </header>
+
+    <main class="main-layout">
+      <aside class="sidebar" id="sidebar">
+        <section class="user-card">
+          <div class="profile-orb rank-bronze">FF</div>
+          <div class="user-info">
+            <strong id="userName">Guest Player</strong>
+            <span id="userRank">BRONZE MEMBER</span>
+          </div>
+          <span class="online-dot" title="Online"></span>
+        </section>
+
+        <div class="section-label">CHAT ROOMS</div>
+        <nav class="room-list" id="roomList"></nav>
+
+        <div class="section-label">SPECIAL</div>
+        <button class="room-btn hidden-room" data-room="guild">
+          <span class="room-icon skull">☠</span>
+          <span class="room-meta">
+            <b>HIDDEN GUILD</b>
+            <small>Guild members only</small>
+          </span>
+          <span class="lock">🔒</span>
+        </button>
+
+        <div class="sidebar-bottom">
+          <button class="admin-link" id="adminBtn">⚙ Admin Panel</button>
+        </div>
+      </aside>
+
+      <section class="chat-panel">
+        <div class="chat-head">
+          <div>
+            <div class="chat-title-row">
+              <span class="room-badge" id="roomBadge">🌐</span>
+              <h2 id="roomTitle">GLOBAL CHAT</h2>
+            </div>
+            <p id="roomSubtitle">Bronze → Grandmaster • Everyone can chat</p>
+          </div>
+          <div class="chat-head-actions">
+            <button class="head-btn" title="Search">⌕</button>
+            <button class="head-btn" title="More">⋮</button>
+          </div>
+        </div>
+
+        <div class="announcement hidden" id="announcementBar">
+          <span class="announcement-tag">ANNOUNCEMENT</span>
+          <span id="announcementText">Welcome to ELITE FF CHAT.</span>
+        </div>
+
+        <div class="messages" id="messages"></div>
+
+        <form class="composer" id="composerForm">
+          <button type="button" class="emoji-btn" id="emojiBtn" title="Emoji">😊</button>
+          <input id="messageInput" type="text" autocomplete="off" maxlength="500" placeholder="Write a message..." />
+          <button type="submit" class="send-btn" title="Send">➤</button>
+        </form>
+      </section>
+
+      <aside class="right-panel">
+        <section class="rank-card">
+          <div class="panel-heading">
+            <span>YOUR RANK</span>
+            <button id="rankInfoBtn" class="tiny-btn">?</button>
+          </div>
+          <div class="big-rank rank-bronze" id="bigRankBadge">E</div>
+          <div class="big-rank-name" id="bigRankName">BRONZE</div>
+          <div class="progress-track"><div class="progress-fill" id="rankProgress"></div></div>
+          <p class="progress-text" id="progressText">1v1 test: 4 rounds to Silver</p>
+          <button class="primary-btn" id="testBtn">VIEW RANK TEST</button>
+        </section>
+
+        <section class="online-card">
+          <div class="panel-heading">
+            <span>MEMBERS ONLINE</span>
+            <span class="online-count" id="onlineCount">0</span>
+          </div>
+          <div id="onlineMembers" class="online-members"></div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="authModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" data-close="authModal">×</button>
+      <div class="modal-icon">E</div>
+      <h3>JOIN ELITE FF CHAT</h3>
+      <p class="modal-subtitle">Create your verified Free Fire member account.</p>
+      <form id="registerForm" class="auth-form">
+        <input type="email" id="email" required placeholder="Email" />
+        <input type="password" id="password" required minlength="6" placeholder="Password" />
+        <input type="text" id="ffName" required maxlength="30" placeholder="Free Fire Name" />
+        <input type="text" id="ffUid" required maxlength="20" placeholder="Free Fire UID" inputmode="numeric" />
+        <button class="primary-btn" type="submit">CREATE ACCOUNT</button>
+      </form>
+      <small class="notice">Demo only: account data is not connected to a backend yet.</small>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="rankModal" aria-hidden="true">
+    <div class="modal-card rank-modal-card">
+      <button class="modal-close" data-close="rankModal">×</button>
+      <h3>RANK PROGRESSION</h3>
+      <p class="modal-subtitle">Your current prototype rules.</p>
+      <div class="rank-list" id="rankList"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
